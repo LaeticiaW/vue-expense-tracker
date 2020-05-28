@@ -1,0 +1,7 @@
+{"name": "Auto",          "subcategories": [{"id": "10", "name": "Auto Insurance", "matchText": ["Progressive"]}, {"id": "11", "name": "Auto Service", "matchText": ["Ford", "Subaru"]}, {"id": "5", "name": "Gas", "matchText": []}]}
+{"name": "Entertainment", "subcategories": []}
+{"name": "Groceries",     "subcategories": [{"id": "7", "name": "Food Lion", "matchText": ["Food Lion"]}, {"id": "2", "name": "Harris Teeter", "matchText": ["Harris Teeter"]}]}
+{"name": "Restaurants",   "subcategories": [{"id": "3", "name": "Brueggers Bagels", "matchText": ["Brueggers"]}]}
+{"name": "Sports",        "subcategories": [{"id": "9", "name": "Biking", "matchText": []}, {"id": "4", "name": "Running", "matchText": []}]}
+{"name": "Travel",        "subcategories": [{"id": "1", "name": "Airlines", "matchText": ["Delta Airlines", "Southwest Airlines", "United Airlines"]}, {"id": "6", "name": "Hotels", "matchText": ["Holiday Inn", "Hyatt", "Marriot"]}]}
+
