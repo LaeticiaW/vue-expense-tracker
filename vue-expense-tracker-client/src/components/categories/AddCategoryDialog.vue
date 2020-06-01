@@ -65,7 +65,7 @@
 
         methods: {
             /*
-             * Add the new categories to the db, emit categories-added event, and then close the dialog
+             * Add the new category to the db, emit category-added event, and then close the dialog
              */
             addCategory() {
                 this.isCategoryUnique = true

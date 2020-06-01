@@ -145,13 +145,13 @@
 
         methods: {
             /*
-             * Retrieve the categories data
+             * Retrieve the category data
              */
             getCategories() {
                 CategoryService.getCategories().then((categories) => {
                     this.categories = categories
                     if (this.categories.length) {
-                        // Default the active categories to the first one in the list
+                        // Default the active category to the first one in the list
                         this.activeTreeIds.push(this.categories[0])
                         this.currentCategory = this.categories[0]
                     }
@@ -162,7 +162,7 @@
             },
 
             /*
-             * Callback for when a categories or subcategory is selected in the tree
+             * Callback for when a category or subcategory is selected in the tree
              */
             itemActivated(actives) {
                 if (actives && actives.length) {
@@ -186,7 +186,7 @@
             },
 
             /*
-             * Determine if the specified item is a categories or a subcategory
+             * Determine if the specified item is a category or a subcategory
              */
             isSubcategory(item) {
                 if (item.parentTreeId !== undefined) {
@@ -210,8 +210,8 @@
             },
 
             /*
-             * Refresh the categories list after a new categories is created, and make the new categories
-             * the active categories
+             * Refresh the categories list after a new category is created, and make the new category
+             * the active category
              */
             categoryAdded(category) {
                 this.refreshCategories(category)
@@ -232,7 +232,7 @@
             },
 
             /*
-             * When the Delete menu item is selected, determine wether to delete a categories or subcategory
+             * When the Delete menu item is selected, determine wether to delete a category or subcategory
              */
             deleteItem() {
                 if (this.isSubcategorySelected) {
@@ -266,7 +266,7 @@
             },
 
             /*
-             * Delete the subcategory from the categories object and then save/update the categories
+             * Delete the subcategory from the category object and then save/update the category
              */
             deleteSubcategory() {
                 this.$confirm(`Are you sure you want to delete subcategory ${this.currentSubcategory.name}?`, {
@@ -275,14 +275,14 @@
                     if (res) {
                         let idx = this.categories.findIndex((cat) => cat.treeId === this.currentSubcategory.parentTreeId)
                         if (idx !== -1) {
-                            // Remove the subcategory from the categories object
+                            // Remove the subcategory from the category object
                             const category = this.categories[idx]
                             idx = category.subcategories.findIndex((subcat) => subcat.treeId === this.currentSubcategory.treeId)
                             if (idx !== -1) {
                                 category.subcategories.splice(idx, 1)
                             }
 
-                            // Save the categories to the db
+                            // Save the category to the db
                             CategoryService.updateCategory(category).then((cat) => {
                                 this.refreshCategories(cat)
                             }).catch((error) => {
@@ -338,7 +338,7 @@
             },
 
             /*
-             * Return the parent categories for the specified subcategory
+             * Return the parent category for the specified subcategory
              */
             getParentCategory(subcategory) {
                 const idx = this.categories.findIndex((cat) => cat.treeId === subcategory.parentTreeId)

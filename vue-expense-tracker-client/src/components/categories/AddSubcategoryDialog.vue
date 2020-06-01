@@ -70,7 +70,7 @@
 
         methods: {
             /*
-             * Add the new subcategory to the parent categories and save to the db
+             * Add the new subcategory to the parent category and save to the db
              */
             addSubcategory() {
                 const newCategory = JSON.parse(JSON.stringify(this.category))

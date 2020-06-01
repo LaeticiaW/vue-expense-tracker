@@ -7,10 +7,8 @@
     "start": "node src/index.js",
     "start-watch": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "createDb": "mongo database/createDb.js",
-    "importSampleOld": "db/importCategories.sh; db/importCategoryMappings.sh; db/importExpenses.sh",
-    "importSample2": "database/setImportPermissions.sh; database/importCategories.sh",
-    "importSample": "database/importCategories.sh"
+    "create-db": "mongo database/createDb.js",
+    "load-data": "database/setImportPermissions.sh; database/importCategories.sh; database/importExpenses.sh"
   },
   "keywords": [],
   "author": "",

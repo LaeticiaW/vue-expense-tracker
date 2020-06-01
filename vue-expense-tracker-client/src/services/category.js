@@ -59,10 +59,20 @@ export default {
      * @param {object} categories - categories object to update
      */
     updateCategory(category) {
+        // Make a copy of the category and remove the treeId and parentTreeId properties before updating.  These properties
+        // are required for the tree widget, but are set at the client and do not need to be persisted.
+        let cat = JSON.parse(JSON.stringify(category))
+        delete cat.treeId
+        delete cat.parentTreeId
+        cat.subcategories.forEach(subcat => {
+            delete subcat.treeId
+            delete subcat.parentTreeId
+        })
+
         return axios({
             url: this.categoryUrl + category._id,
             method: 'PUT',
-            data: category
+            data: cat
         }).then((response) => response.data).catch((error) => {
             console.error('CategoryService.updateCategory error', error.response ? error.response : error)
             return Promise.reject(error.response)

@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <page-header title="Imports"/>
+        <page-header title="Import Expenses"/>
 
         <div class="page-content table-content">
 

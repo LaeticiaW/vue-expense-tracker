@@ -153,6 +153,7 @@
                 const category = this.categoryMap[catId]
                 if (category) {
                     this.subcategories = category.subcategories
+                    console.log('subcategories:', this.subcategories)
                 }
             },
 

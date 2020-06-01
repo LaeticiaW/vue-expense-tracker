@@ -32,7 +32,7 @@
             </v-card-text>
         </v-card>
 
-        <!-- Update categories dialog -->
+        <!-- Update category dialog -->
         <update-category-dialog v-if="showCategoryDialog" v-model="showCategoryDialog"
                                 :category="category" @category-updated="categoryUpdated"/>
     </div>

@@ -34,7 +34,7 @@ const routes = [
         meta: { icon: 'mdi-credit-card-outline' },
         component: ExpenseSummary
     }, {
-        name: 'Imports',
+        name: 'Import Expenses',
         path: '/imports',
         meta: { icon: 'mdi-publish' },
         component: Imports

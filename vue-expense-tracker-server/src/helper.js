@@ -26,10 +26,14 @@ module.exports = {
         // Add the category name and subcategory name to the expense data
         expenses.forEach(exp => {
             if (exp.categoryId) {
-                exp.categoryName = categoryMap[exp.categoryId].name
+                if (categoryMap[exp.categoryId]) {
+                    exp.categoryName = categoryMap[exp.categoryId].name
+                }
             }
             if (exp.subcategoryId) {
-                exp.subcategoryName = subcategoryMap[exp.subcategoryId].name
+                if (subcategoryMap[exp.subcategoryId]) {
+                    exp.subcategoryName = subcategoryMap[exp.subcategoryId].name
+                }
             }
         })
 
