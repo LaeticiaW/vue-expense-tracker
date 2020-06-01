@@ -23,10 +23,13 @@ The client web application is written in Javascript, Vue, Vuetify, Axios, Highch
 * Node and npm, which can be installed from https://nodejs.org/en/download/
 * MongoDB, which can be installed from https://docs.mongodb.com/manual/installation/ and configured to run on port 27017
 
-## Install and run the Vue Expense Tracker web app
+## Install and run the Vue Expense Tracker web app in Developer mode
+
+These install instructions were tested on Mac/OS and may need to be tweaked for Windows environment.
 
 Before starting
->**Make sure that node and npm have been installed and that MongoDB is running locally on port 27017.  The mongo shell command should be in the user path.**
+>**Make sure that node and npm have been installed.
+>Also make sure that MongoDB is running locally on port 27017.  The mongo shell command should be in the user path.**
 
 Clone the vue-expense-tracker code
 ```shell
@@ -50,28 +53,30 @@ npm run initialize-db
 npm run load-data
 ```
 
-Start the server app at http://localhost:3000
+Start the server app at http://localhost:3000 (leaves server running) and leave cmd window running
 ```shell
 npm run start-server
 ```
 
-Start the client web app and display in browser at http://localhost:8080
+From a new command window, start the client web app and display in browser at http://localhost:8080
 
 ```shell
+cd vue-expense-tracker
 npm run start-client
 ```
 
+
 Notes about the Web App:
 
-* To test out the Import Expenses feature, there is a sampleImportData.csv file in the vue-expense-tracke-server/database directory.
-* When filtering expense data in the app, note that the sample data expense dates are all in the year 2020
+* To test out the Import Expenses feature, there is a sampleImportData.csv file in the vue-expense-tracke-server/database directory.  It loads records for the month of Apr 2020
+* When filtering expense data in the app, note that the sample data expense dates are all from Jan to Mar 2020
 
-## Vue-Expense-Tracker Description
+## Vue-Expense-Tracker WebApp Description
 
 * There are 5 main menu options:  Dashboard, Categories, Manage Expenses, Expense Summary, and Imports.
 * The Dashboard page displays a pie chart showing expenses by category and a time series chart showing category expenses over time.
 * The Categories page allows users to View, Add, Update, and Delete categories and subcategories.
 * The Manage Expenses page allows users to view/filter, add, update, and delete expenses.
 * The Expense Summary page allows users to summarize expenses by date and category.
-* The Import Expenses page allows importing expense transactions from a CSV file that contains 3 fields: trxDate, amount, description.  The import process will automatically set category and subcategory values for expenses if there are any category mappings that match.
+* The Import Expenses page allows importing expense transactions from a CSV file that contains the following fields: trxDate, amount, description.  The import process will automatically set category and subcategory values for expenses if there are any category mappings that match.
    

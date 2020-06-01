@@ -170,13 +170,11 @@ export default {
             let data = []
             let dt
             expenses.forEach((exp) => {
-                console.log('exp:', exp)
                 if (exp.categoryId !== prevCatId && prevCatId !== '') {
                     seriesObj = {
                         name: prevCatName,
                         data: data
                     }
-                    console.log('pushing:', seriesObj)
                     series.push(seriesObj)
                     data = []
                 }
@@ -191,10 +189,8 @@ export default {
                     name: prevCatName,
                     data: data
                 }
-                console.log('pushing last:', seriesObj)
                 series.push(seriesObj)
             }
-            console.log('series:', series)
             return series
         }).catch((error) => {
             console.error('ExpenseService.getExpenseTimeSeries error:', error.response ? error.response : error)
