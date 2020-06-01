@@ -68,7 +68,7 @@ npm run start-client
 
 Notes about the Web App:
 
-* To test out the Import Expenses feature, there is a sampleImportData.csv file in the vue-expense-tracke-server/database directory.  It loads records for the month of Apr 2020
+* To test out the Import Expenses feature, there is a sampleImportData.csv file in the vue-expense-tracker-server/database directory.  It loads records for the month of Apr 2020. (date format MM-DD-YYYY, date position 1, amt position 2, description position 5)
 * When filtering expense data in the app, note that the sample data expense dates are all from Jan to Mar 2020
 
 ## Vue-Expense-Tracker WebApp Description
