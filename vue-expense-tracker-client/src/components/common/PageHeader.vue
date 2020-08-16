@@ -1,6 +1,6 @@
 <template>
     <!-- Common page header -->
-    <div class="page-title">{{title}}</div>
+    <h2 class="page-title">{{title}}</h2>
 </template>
 
 <script>
@@ -21,6 +21,5 @@
         font-size: 1.25rem;
         font-weight: bold;
         padding: 0px 8px 8px 0px;
-
     }
 </style>

@@ -15,7 +15,6 @@
                     <v-form ref="form" v-model="isFormValid">
                         <v-container class="form-container">
                             <v-row>
-
                                 <v-col cols="12" sm="6" class="form-col">
                                     <v-card flat outlined class="fill-height">
                                         <v-toolbar dense flat color="secondary">
@@ -31,11 +30,6 @@
                                                       label="Date Format" :items="dateFormats" :rules="[ruleRequired]"></v-select>
                                             <v-checkbox v-model="fileInfo.negativeExpenses" class="has-header-row-checkbox"
                                                         label="Expenses are Negative"></v-checkbox>
-                                            <!--
-                                            <v-select v-model="fileInfo.negativeNumberFormat" dense outlined required
-                                                      label="Negative Number Format" :items="negativeNumberFormats"
-                                                      :rules="[ruleRequired]"></v-select>
-                                            -->
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -47,10 +41,6 @@
                                         </v-toolbar>
                                         <v-divider></v-divider>
                                         <v-card-text class="card-text">
-                                            <!--
-                                            <v-checkbox v-model="fileStructure.hasHeaderRow" class="has-header-row-checkbox"
-                                                        label="File Has Header Row"></v-checkbox>
-                                                        -->
                                             <v-select v-model="fileStructure.dateFormatField" dense outlined required
                                                       label="Date Field Position" :items="fieldPositions"
                                                       :rules="[ruleRequired]"></v-select>

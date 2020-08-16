@@ -34,8 +34,9 @@ drilldown(Highcharts)
 
 // Create the Vue instance and render the App component at #app
 new Vue({
+    el: '#app',
+    render: (h) => h(App),
     router,
     store,
-    vuetify,
-    render: (h) => h(App)
-}).$mount('#app')
+    vuetify
+})
