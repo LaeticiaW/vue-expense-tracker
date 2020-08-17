@@ -3,27 +3,14 @@
         <page-header title="Expense Summary"/>
 
         <div class="page-content table-content">
-
             <!-- Filter -->
             <table-filter>
                 <template v-slot:inputs>
-
                     <!-- Start and end dates -->
                     <date-range-input :date-range="filter" @date-range-changed="filterChanged"></date-range-input>
-
                     <!-- Category -->
-                    <span class="filter-input select-input">
-                        <v-select multiple dense outlined hide-details clearable v-model="filter.categoryIds"
-                                  :items="selectCategories" class="category-select"
-                                  label="Category" background-color="#ffffff"
-                                  item-text="name" item-value="_id"
-                                  @change="filterChanged" menu-props="offset-y, bottom">
-                            <template v-slot:selection="{ item, index }">
-                                <span v-if="index === 0">{{ item.name }}</span>
-                                <span v-if="index === 1" class="other-count">(+{{ filter.categoryIds.length - 1 }})</span>
-                            </template>
-                        </v-select>
-                    </span>
+                    <category-select v-model="filter.categoryIds" :items="selectCategories" label="Category"
+                                     @change="filterChanged"/>
                 </template>
             </table-filter>
 
@@ -80,11 +67,12 @@
 <script>
     import ExpenseService from '@/services/expense'
     import CategoryService from '@/services/category'
-    import SnackMsg from '@/components/common/SnackMsg.vue'
+    import SnackMsg from '@/components/common/SnackMsg'
     import TableFilter from '@/components/common/TableFilter'
     import DateRangeInput from '@/components/common/DateRangeInput'
     import moment from 'moment'
-    import PageHeader from '../common/PageHeader.vue'
+    import PageHeader from '../common/PageHeader'
+    import CategorySelect from '../common/CategorySelect'
 
     export default {
         name: 'ExpenseSummary',
@@ -124,7 +112,8 @@
             PageHeader,
             SnackMsg,
             TableFilter,
-            DateRangeInput
+            DateRangeInput,
+            CategorySelect
         },
 
         computed: {
@@ -201,47 +190,22 @@
     .filter-select {
         width: 200px;
     }
-
     .filter-input.select-input {
         width: 300px !important;
     }
-
     .no-subcategories {
         padding-left: 24px;
         background-color: #e9e8f4;
     }
-
-    .other-count {
-        padding-left: 4px;
-    }
-
     .expanded-area {
         background-color: #e9e8f4;
-
         .subcategory-table {
             td {
                 background-color: #e9e8f4;
             }
-
             .subcategory-amount {
                 padding-right: 58px;
             }
         }
-    }
-
-    /* Override Vuetify styling for data table expanded row */
-    ::v-deep .v-data-table__expanded__content {
-        box-shadow: none !important;
-        background-color: #ffffff;
-        border-bottom: 0px;
-        border-top: solid 2px #cdcdcd;
-    }
-
-    ::v-deep .v-data-table__expanded__content table {
-        background-color: white;
-    }
-
-    ::v-deep .v-data-table__expanded__content > td {
-        border-bottom: none !important;
     }
 </style>

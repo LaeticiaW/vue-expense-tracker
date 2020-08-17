@@ -31,7 +31,7 @@
 
                         <!-- Description -->
                         <v-text-field dense outlined required v-model="tempExpense.description"
-                                      label="Description" class="description"></v-text-field>
+                                      label="Description" class="description" :rules="[ruleRequired]"></v-text-field>
 
                         <!-- Category -->
                         <v-select dense outlined required v-model="tempExpense.categoryId"
@@ -188,14 +188,11 @@
         color: #bf0d3e;
         padding-bottom: 16px;
     }
-
     .dialog-content {
         padding-top: 24px !important;
         padding-bottom: 0px !important;
     }
-
     .form-item {
         margin: 16px 0px;
     }
-
 </style>

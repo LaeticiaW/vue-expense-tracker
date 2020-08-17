@@ -17,10 +17,10 @@
                                     </v-btn>
                                 </template>
                                 <v-list dense>
-                                    <v-list-item @click="showAddCategoryDialog">
+                                    <v-list-item @click="showCategoryDialog = true">
                                         <v-list-item-title>Add Category</v-list-item-title>
                                     </v-list-item>
-                                    <v-list-item :disabled="!isCategorySelected" @click="showAddSubcategoryDialog">
+                                    <v-list-item :disabled="!isCategorySelected" @click="showSubcategoryDialog = true">
                                         <v-list-item-title>Add Subcategory</v-list-item-title>
                                     </v-list-item>
                                     <v-list-item :disabled="!isCategorySelected && !isSubcategorySelected"
@@ -51,7 +51,7 @@
                                             @update:active="itemActivated"
                                             @update:open="itemOpened">
                                     <template v-slot:append="{item, leaf, active}">
-                                        <v-btn icon v-if="active && !leaf" @click.stop="showAddSubcategoryDialog"
+                                        <v-btn icon v-if="active && !leaf" @click.stop="showSubcategoryDialog = true"
                                                color="primary" title="Add Subcategory">
                                             <v-icon small>{{'mdi-plus'}}</v-icon>
                                         </v-btn>
@@ -67,27 +67,19 @@
                 </v-col>
                 <v-col cols="12" sm="6" md="7">
                     <!-- Category Details -->
-                    <category-details v-if="isCategorySelected"
-                                      :category="currentCategory"
-                                      @category-updated="refreshCategories"/>
-
+                    <category-details v-if="isCategorySelected" :category="currentCategory" @category-updated="refreshCategories"/>
                     <!-- Subcategory Details -->
-                    <subcategory-details v-if="isSubcategorySelected"
-                                         :category="parentCategory"
-                                         :subcategory="currentSubcategory"
-                                         @subcategory-updated="refreshCategories"/>
+                    <subcategory-details v-if="isSubcategorySelected" :category="parentCategory"
+                                         :subcategory="currentSubcategory"   @subcategory-updated="refreshCategories"/>
                 </v-col>
             </v-row>
         </div>
 
         <!-- Add Category dialog -->
-        <add-category-dialog v-if="showCategoryDialog" v-model="showCategoryDialog"
-                             @category-added="categoryAdded"></add-category-dialog>
-
+        <add-category-dialog v-if="showCategoryDialog" v-model="showCategoryDialog" @category-added="refreshCategories"/>
         <!-- Add Subcategory dialog -->
         <add-subcategory-dialog v-if="showSubcategoryDialog" v-model="showSubcategoryDialog"
-                                :category="currentCategory" @subcategory-added="subcategoryAdded"></add-subcategory-dialog>
-
+                                :category="currentCategory" @subcategory-added="refreshCategories"/>
         <!-- Snack Msg -->
         <snack-msg ref="snack" :options="snackOptions"/>
     </div>
@@ -203,35 +195,6 @@
             },
 
             /*
-             * Display the Add Category dialog
-             */
-            showAddCategoryDialog() {
-                this.showCategoryDialog = true
-            },
-
-            /*
-             * Refresh the categories list after a new category is created, and make the new category
-             * the active category
-             */
-            categoryAdded(category) {
-                this.refreshCategories(category)
-            },
-
-            /*
-             * Display the Add Subcategory dialog
-             */
-            showAddSubcategoryDialog() {
-                this.showSubcategoryDialog = true
-            },
-
-            /*
-             * After a new subcategory is created, refresh the categories list
-             */
-            subcategoryAdded(category, subcategory) {
-                this.refreshCategories(category, subcategory)
-            },
-
-            /*
              * When the Delete menu item is selected, determine wether to delete a category or subcategory
              */
             deleteItem() {
@@ -299,6 +262,7 @@
              * Note that currentCategory and currentSubcategory must contain references to the newly retrieved categories
              */
             refreshCategories(currentCat, currentSubcat) {
+                console.log('refreshCategories:', currentCat, currentSubcat)
                 CategoryService.getCategories().then((categories) => {
                     this.categories = categories
                     this.currentCategory = null
@@ -379,11 +343,9 @@
         height: calc(100vh - 240px);
         overflow-y: auto;
     }
-
     ::v-deep .v-card {
         height: calc(100vh - 170px);
     }
-
     ::v-deep .v-treeview-node__content {
         cursor: pointer;
     }

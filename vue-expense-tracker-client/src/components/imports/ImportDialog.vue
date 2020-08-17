@@ -367,7 +367,6 @@
         color: #bf0d3e;
         padding-bottom: 16px;
     }
-
     .dialog-content {
         padding-top: 24px !important;
 
@@ -379,7 +378,6 @@
                 padding-top: 0px !important;
                 padding-bottom: 0px !important;
             }
-
             .card-text {
                 padding-bottom: 0px !important;
 
@@ -387,7 +385,6 @@
                     font-weight: bold;
                 }
             }
-
             .has-header-row-checkbox {
                 margin-top: 4px !important;
                 margin-bottom: 8px !important;

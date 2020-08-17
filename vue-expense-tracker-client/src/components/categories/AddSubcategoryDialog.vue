@@ -82,7 +82,7 @@
                 this.sortArray(newCategory.subcategories, 'name')
 
                 CategoryService.updateCategory(newCategory).then(() => {
-                    this.$emit('subcategory-added', this.subcategoryName)
+                    this.$emit('subcategory-added', this.category.name, this.subcategoryName)
                     this.close()
                 }).catch((error) => {
                     if (error && error.data && error.data.errmsg && error.data.errmsg.indexOf('duplicate') !== -1) {
@@ -119,7 +119,6 @@
     .form-container {
         padding: 0px;
     }
-
     .subcategory-col {
         padding-top: 0px;
         padding-bottom: 0px;

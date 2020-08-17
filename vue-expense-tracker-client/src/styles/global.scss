@@ -66,3 +66,20 @@ legend {
 ::v-deep .v-input__icon--clear button.mdi-close {
   font-size: 16px !important;
 }
+
+
+/* Override Vuetify styling for data table expanded row */
+::v-deep .v-data-table__expanded__content {
+  box-shadow: none !important;
+  background-color: #ffffff;
+  border-bottom: 0px;
+  border-top: solid 2px #cdcdcd;
+}
+
+::v-deep .v-data-table__expanded__content table {
+  background-color: white;
+}
+
+::v-deep .v-data-table__expanded__content > td {
+  border-bottom: none !important;
+}

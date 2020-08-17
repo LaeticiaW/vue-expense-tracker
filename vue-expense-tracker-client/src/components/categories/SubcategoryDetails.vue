@@ -89,7 +89,6 @@
     label {
         font-weight: bold;
     }
-
     .details-title {
         font-size: 1rem;
     }

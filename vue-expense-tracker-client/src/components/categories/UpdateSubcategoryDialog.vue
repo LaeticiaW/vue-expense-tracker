@@ -213,11 +213,9 @@
         border-radius: 5px;
         border: solid 1px #9a9a9a;
     }
-
     .new-text-mapping-container {
         padding-top: 16px;
     }
-
     ::v-deep .v-list-item__action {
         margin: 6px 0px !important;
     }

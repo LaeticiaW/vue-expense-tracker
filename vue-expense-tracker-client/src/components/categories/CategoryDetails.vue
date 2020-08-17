@@ -85,11 +85,9 @@
     label {
         font-weight: bold;
     }
-
     .details-title {
         font-size: 1rem;
     }
-
     .icon-btn {
         padding: 0px !important;
         min-width: 28px !important;

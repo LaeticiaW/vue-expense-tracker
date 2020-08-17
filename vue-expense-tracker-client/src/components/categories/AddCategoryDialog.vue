@@ -112,7 +112,6 @@
     .form-container {
         padding: 0px;
     }
-
     .category-col {
         padding-top: 0px;
         padding-bottom: 0px;

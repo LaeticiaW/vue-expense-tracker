@@ -6,23 +6,11 @@
             <!-- Filter -->
             <table-filter>
                 <template v-slot:inputs>
-
                     <!-- Start and end dates -->
                     <date-range-input :date-range="filter" @date-range-changed="filterChanged"></date-range-input>
-
                     <!-- Category -->
-                    <span class="filter-input">
-                        <v-select multiple dense outlined hide-details clearable v-model="filter.categoryIds"
-                                  :items="selectCategories" class="category-select"
-                                  label="Category" background-color="#ffffff"
-                                  item-text="name" item-value="_id"
-                                  @change="filterChanged" menu-props="offset-y, bottom">
-                            <template v-slot:selection="{ item, index }">
-                                <span v-if="index === 0">{{ item.name }}</span>
-                                <span v-if="index === 1" class="other-count">(+{{ filter.categoryIds.length - 1 }})</span>
-                            </template>
-                        </v-select>
-                    </span>
+                    <category-select v-model="filter.categoryIds" :items="selectCategories" label="Category"
+                                     @change="filterChanged"/>
                 </template>
 
                 <template v-slot:actions>
@@ -59,7 +47,7 @@
 
         <!-- Update Expense Dialog -->
         <expense-dialog v-if="showExpenseDialog" v-model="showExpenseDialog" :expense="selectedExpense"
-                        @expense-updated="getExpenses"></expense-dialog>
+                        @expense-updated="getExpenses"/>
 
         <!-- Snack Msg -->
         <snack-msg ref="snack" :options="snackOptions"></snack-msg>
@@ -75,6 +63,7 @@
     import TableFilter from '@/components/common/TableFilter'
     import DateRangeInput from '@/components/common/DateRangeInput'
     import PageHeader from '../common/PageHeader'
+    import CategorySelect from '../common/CategorySelect'
 
     export default {
         name: 'Expenses',
@@ -115,7 +104,8 @@
             ExpenseDialog,
             SnackMsg,
             TableFilter,
-            DateRangeInput
+            DateRangeInput,
+            CategorySelect
         },
 
         computed: {
@@ -218,8 +208,4 @@
 
 <style lang="scss" scoped>
     @import '../../styles/global.scss';
-
-    .other-count {
-        padding-left: 4px;
-    }
 </style>
