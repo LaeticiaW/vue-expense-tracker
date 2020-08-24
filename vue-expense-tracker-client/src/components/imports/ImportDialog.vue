@@ -7,7 +7,7 @@
                     <v-toolbar-title>Import Expenses</v-toolbar-title>
                 </v-toolbar>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-text class="dialog-content">
                     <div class="dialog-error error--text">{{dialogMessage}}</div>
@@ -23,13 +23,13 @@
                                         <v-divider></v-divider>
                                         <v-card-text class="card-text">
                                             <v-file-input v-model="fileInfo.csvFile" dense outlined required
-                                                          label="File Name" :rules="[ruleRequired]"></v-file-input>
+                                                          label="File Name" :rules="[ruleRequired]"/>
                                             <v-text-field v-model="fileInfo.description" dense outlined required
-                                                          label="Description" :rules="[ruleRequired]"></v-text-field>
+                                                          label="Description" :rules="[ruleRequired]"/>
                                             <v-select v-model="fileInfo.dateFormat" dense outlined
-                                                      label="Date Format" :items="dateFormats" :rules="[ruleRequired]"></v-select>
+                                                      label="Date Format" :items="dateFormats" :rules="[ruleRequired]"/>
                                             <v-checkbox v-model="fileInfo.negativeExpenses" class="has-header-row-checkbox"
-                                                        label="Expenses are Negative"></v-checkbox>
+                                                        label="Expenses are Negative"/>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -42,14 +42,11 @@
                                         <v-divider></v-divider>
                                         <v-card-text class="card-text">
                                             <v-select v-model="fileStructure.dateFormatField" dense outlined required
-                                                      label="Date Field Position" :items="fieldPositions"
-                                                      :rules="[ruleRequired]"></v-select>
+                                                      label="Date Field Position" :items="fieldPositions" :rules="[ruleRequired]"/>
                                             <v-select v-model="fileStructure.amountField" dense outlined required
-                                                      label="Amount Field Position" :items="fieldPositions"
-                                                      :rules="[ruleRequired]"></v-select>
+                                                      label="Amount Field Position" :items="fieldPositions" :rules="[ruleRequired]"/>
                                             <v-select v-model="fileStructure.descriptionField" dense outlined required
-                                                      label="Description Field Position" :items="fieldPositions"
-                                                      :rules="[ruleRequired]"></v-select>
+                                                      label="Description Field Position" :items="fieldPositions" :rules="[ruleRequired]"/>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -59,7 +56,7 @@
 
                 </v-card-text>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-actions class="card-actions">
                     <v-btn text color="#787878" @click="cancel">Cancel</v-btn>

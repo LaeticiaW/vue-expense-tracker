@@ -2,9 +2,9 @@
     <!-- Common filter bar containing slots for inputs and actions -->
     <div class="filter-container">
         <v-toolbar flat color="#ffffff" class="filter">
-            <slot name="inputs"></slot>
-            <v-spacer></v-spacer>
-            <slot name="actions"></slot>
+            <slot name="inputs"/>
+            <v-spacer/>
+            <slot name="actions"/>
         </v-toolbar>
     </div>
 </template>

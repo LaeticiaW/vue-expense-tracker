@@ -125,13 +125,13 @@ router.get('/expense/timeseries', (req, res) => {
  * Get an expense document by id
  */
 router.get('/expense/:id', (req, res) => {
-    if (id === undefined || id === null) {
+    if (req.params.id === undefined || req.params.id === null) {
         console.error('Missing id parameter')
         res.status(400).send('Missing id parameter')
         return
     }
 
-    Expense.findOne({ _id: id }).then(doc => {
+    Expense.findOne({ _id: req.params.id }).then(doc => {
         res.json(doc)
     }).catch(err => {
         res.json(err)

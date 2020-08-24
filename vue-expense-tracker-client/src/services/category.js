@@ -61,7 +61,7 @@ export default {
     updateCategory(category) {
         // Make a copy of the category and remove the treeId and parentTreeId properties before updating.  These properties
         // are required for the tree widget, but are set at the client and do not need to be persisted.
-        let cat = JSON.parse(JSON.stringify(category))
+        const cat = JSON.parse(JSON.stringify(category))
         delete cat.treeId
         delete cat.parentTreeId
         cat.subcategories.forEach(subcat => {

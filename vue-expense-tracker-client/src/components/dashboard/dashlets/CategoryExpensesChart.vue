@@ -3,20 +3,20 @@
         <!-- Dashlet Actions -->
         <template v-slot:actions>
             <!-- Start and end dates -->
-            <date-range-input :date-range="filter" @date-range-changed="filterChanged"></date-range-input>
+            <date-range-input :date-range="filter" @date-range-changed="filterChanged"/>
         </template>
 
         <!-- Dashlet Content -->
         <template v-slot:content>
             <div v-if="show" class="content-container">
                 <div class="chart-container">
-                    <highcharts v-if="show" ref="highcharts" :options="chartOptions"></highcharts>
+                    <highcharts v-if="show" ref="highcharts" :options="chartOptions"/>
                 </div>
                 <div class="chart-bottom-text">Total Expenses: ${{totalExpensesAmount | formatAmount}}</div>
             </div>
 
             <!-- Snack Message -->
-            <snack-msg :options="snackOptions"></snack-msg>
+            <snack-msg :options="snackOptions"/>
         </template>
     </dashlet>
 </template>

@@ -8,7 +8,7 @@
                     <v-toolbar-title>{{dialogTitle}}</v-toolbar-title>
                 </v-toolbar>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-text class="dialog-content">
                     <v-form ref="form" v-model="isFormValid">
@@ -21,37 +21,37 @@
                                 <v-text-field ref="trxDate" outlined readonly dense required
                                               v-model="tempExpense.trxDate" class="trxDate" v-on="on" background-color="#ffffff"
                                               label="Expense Date" :maxlength="10" :rules="[ruleRequired]"
-                                              spellcheck="false" autocomplete="off" autofocus></v-text-field>
+                                              spellcheck="false" autocomplete="off" autofocus/>
                             </template>
                             <v-date-picker v-model="tempExpense.trxDate" no-title scrollable header-color="primary">
-                                <v-spacer></v-spacer>
+                                <v-spacer/>
                                 <v-btn text color="primary" @click="startDateMenu = false">Cancel</v-btn>
                             </v-date-picker>
                         </v-menu>
 
                         <!-- Description -->
                         <v-text-field dense outlined required v-model="tempExpense.description"
-                                      label="Description" class="description" :rules="[ruleRequired]"></v-text-field>
+                                      label="Description" class="description" :rules="[ruleRequired]"/>
 
                         <!-- Category -->
                         <v-select dense outlined required v-model="tempExpense.categoryId"
                                   :items="categories" item-text="name" item-value="_id" @change="categorySelected"
                                   label="Category" background-color="#ffffff" class="form-item category"
-                                  menu-props="offset-y, bottom" :rules="[ruleRequired]"></v-select>
+                                  menu-props="offset-y, bottom" :rules="[ruleRequired]"/>
 
                         <!-- Subcategory -->
                         <v-select dense outlined required v-model="tempExpense.subcategoryId"
                                   :items="subcategories" item-text="name" item-value="id"
                                   label="Subcategory" background-color="#ffffff" class="form-item subcategory"
-                                  menu-props="offset-y, bottom" :rules="[ruleRequired]"></v-select>
+                                  menu-props="offset-y, bottom" :rules="[ruleRequired]"/>
 
                         <!-- Amount -->
                         <v-text-field dense outlined required v-model="tempExpense.amount"
-                                      label="Amount" class="form-item amount" :rules="[ruleRequired]"></v-text-field>
+                                      label="Amount" class="form-item amount" :rules="[ruleRequired]"/>
                     </v-form>
                 </v-card-text>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-actions>
                     <v-btn text color="#787878" @click="close" class="cancel-button">Cancel</v-btn>
@@ -153,7 +153,6 @@
                 const category = this.categoryMap[catId]
                 if (category) {
                     this.subcategories = category.subcategories
-                    console.log('subcategories:', this.subcategories)
                 }
             },
 

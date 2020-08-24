@@ -45,11 +45,11 @@
             }
         },
         methods: {
-            handleChange(newValue) {
+            handleChange() {
                 // Propagate the change event to parent
                 this.$emit('change', this.selectedValues)
             },
-            handleInput(newValue) {
+            handleInput() {
                 // v-model implementation
                 this.$emit('input', this.selectedValues)
             }

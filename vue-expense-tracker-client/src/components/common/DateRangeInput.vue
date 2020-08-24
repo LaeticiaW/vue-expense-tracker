@@ -3,17 +3,16 @@
     <div class="date-range-container">
         <!-- Start Date -->
         <span class="date-wrapper">
-            <v-menu offset-y bottom v-model="startDateMenu" :close-on-content-click="true"
-                    transition="scale-transition">
+            <v-menu offset-y bottom v-model="startDateMenu" :close-on-content-click="true" transition="scale-transition">
                 <template v-slot:activator="{ on }">
                     <v-text-field ref="startDate" outlined readonly dense hide-details required
                                   v-model="dateRange.startDate" name="startDate" v-on="on" class="start-date"
                                   background-color="#ffffff" label="Start Date" :maxlength="10"
-                                  spellcheck="false" autocomplete="off" autofocus></v-text-field>
+                                  spellcheck="false" autocomplete="off" autofocus/>
                 </template>
                 <v-date-picker v-model="dateRange.startDate" no-title scrollable header-color="primary"
                                :max="maxDate" @input="dateRangeChanged">
-                    <v-spacer></v-spacer>
+                    <v-spacer/>
                     <v-btn text color="primary" @click="startDateMenu = false">Cancel</v-btn>
                 </v-date-picker>
             </v-menu>
@@ -27,11 +26,11 @@
                     <v-text-field ref="endDate" outlined readonly dense hide-details required
                                   v-model="dateRange.endDate" name="endDate" v-on="on" class="end-date"
                                   background-color="#ffffff" label="End Date" :maxlength="10"
-                                  spellcheck="false" autocomplete="off" autofocus></v-text-field>
+                                  spellcheck="false" autocomplete="off" autofocus/>
                 </template>
                 <v-date-picker v-model="dateRange.endDate" no-title scrollable header-color="primary"
                                :max="maxDate" @input="dateRangeChanged">
-                    <v-spacer></v-spacer>
+                    <v-spacer/>
                     <v-btn text color="primary" @click="endDateMenu = false">Cancel</v-btn>
                 </v-date-picker>
             </v-menu>

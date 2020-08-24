@@ -4,7 +4,7 @@
             <!-- Toolbar -->
             <v-toolbar dense short flat color="secondary">
                 <v-toolbar-title class="details-title">Category Details</v-toolbar-title>
-                <v-spacer></v-spacer>
+                <v-spacer/>
                 <v-btn small dark color="primary" title="Update Category" class="icon-btn" @click="showUpdateCategoryDialog">
                     <v-icon small>mdi-pencil</v-icon>
                 </v-btn>

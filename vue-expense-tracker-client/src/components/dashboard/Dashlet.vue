@@ -3,10 +3,10 @@
 
         <v-toolbar flat>
             <v-toolbar-title>{{options.dashletTitle}}</v-toolbar-title>
-            <v-spacer></v-spacer>
+            <v-spacer/>
 
             <!-- Dashlet actions slot -->
-            <slot name="actions"></slot>
+            <slot name="actions"/>
 
             <!-- Maximize and Minimize buttons -->
             <v-btn v-if="!expanded" small dark title="Maximize" @click="maximize" color="primary" class="icon-btn control">
@@ -17,7 +17,7 @@
             </v-btn>
         </v-toolbar>
 
-        <v-divider></v-divider>
+        <v-divider/>
 
         <div class="dashlet-content">
             <!-- Dashlet content slot -->

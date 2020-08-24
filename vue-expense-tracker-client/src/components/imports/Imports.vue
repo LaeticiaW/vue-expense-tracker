@@ -3,7 +3,6 @@
         <page-header title="Import Expenses"/>
 
         <div class="page-content table-content">
-
             <!-- Filter -->
             <table-filter>
                 <template v-slot:inputs>
@@ -44,11 +43,9 @@
         </div>
 
         <!-- Import Expenses Dialog -->
-        <import-dialog v-if="showDialog" v-model="showDialog" @file-imported="getImports"></import-dialog>
-
+        <import-dialog v-if="showDialog" v-model="showDialog" @file-imported="getImports"/>
         <!-- Snack Msg -->
-        <snack-msg ref="snack" :options="snackOptions"></snack-msg>
-
+        <snack-msg ref="snack" :options="snackOptions"/>
     </div>
 </template>
 

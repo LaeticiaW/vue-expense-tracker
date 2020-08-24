@@ -7,7 +7,7 @@
             <table-filter>
                 <template v-slot:inputs>
                     <!-- Start and end dates -->
-                    <date-range-input :date-range="filter" @date-range-changed="filterChanged"></date-range-input>
+                    <date-range-input :date-range="filter" @date-range-changed="filterChanged"/>
                     <!-- Category -->
                     <category-select v-model="filter.categoryIds" :items="selectCategories" label="Category"
                                      @change="filterChanged"/>
@@ -50,7 +50,7 @@
                         @expense-updated="getExpenses"/>
 
         <!-- Snack Msg -->
-        <snack-msg ref="snack" :options="snackOptions"></snack-msg>
+        <snack-msg ref="snack" :options="snackOptions"/>
     </div>
 </template>
 

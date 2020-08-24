@@ -7,7 +7,7 @@
             <table-filter>
                 <template v-slot:inputs>
                     <!-- Start and end dates -->
-                    <date-range-input :date-range="filter" @date-range-changed="filterChanged"></date-range-input>
+                    <date-range-input :date-range="filter" @date-range-changed="filterChanged"/>
                     <!-- Category -->
                     <category-select v-model="filter.categoryIds" :items="selectCategories" label="Category"
                                      @change="filterChanged"/>
@@ -53,14 +53,14 @@
             <div class="table-footer" style="position: relative;">
                 <v-toolbar flat dense>
                     <span>{{expenseTotals.length}} {{rowText}}</span>
-                    <v-spacer></v-spacer>
+                    <v-spacer/>
                     <span>Total Amount: {{totalExpensesAmount | formatAmount}}</span>
                 </v-toolbar>
             </div>
         </div>
 
         <!-- Snack Msg -->
-        <snack-msg ref="snack" :options="snackOptions"></snack-msg>
+        <snack-msg ref="snack" :options="snackOptions"/>
     </div>
 </template>
 

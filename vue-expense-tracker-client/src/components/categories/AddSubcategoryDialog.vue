@@ -18,15 +18,14 @@
                                                   v-model="subcategoryName"
                                                   :rules="nameRules" label="Subcategory"
                                                   spellcheck="false" autocomplete="off"
-                                                  @keydown.enter.prevent="addSubcategory">
-                                    </v-text-field>
+                                                  @keydown.enter.prevent="addSubcategory"/>
                                 </v-col>
                             </v-row>
                         </v-container>
                     </v-form>
                 </v-card-text>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-actions>
                     <v-btn text color="#787878" @click="close">Cancel</v-btn>

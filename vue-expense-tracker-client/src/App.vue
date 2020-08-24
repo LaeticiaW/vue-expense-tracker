@@ -1,25 +1,6 @@
 <template>
     <v-app>
-        <!-- Navigation drawer -->
-        <v-navigation-drawer v-model="navDrawerOpen" clipped absolute app hide-overlay temporary>
-            <v-list dense nav>
-                <v-list-item link v-for="item in navRoutes" :key="item.name" :to="{name: item.name}">
-                    <v-list-item-icon>
-                        <v-icon>{{item.meta.icon}}</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                        <v-list-item-title>{{item.name}}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
-
-        <!-- App bar -->
-        <v-app-bar app color="primary" dark>
-            <v-app-bar-nav-icon @click.stop="navIconClicked"/>
-            <v-toolbar-title>Expense Tracker</v-toolbar-title>
-            <v-spacer></v-spacer>
-        </v-app-bar>
+       <app-bar/>
 
         <!-- Content area/Router View -->
         <v-content>
@@ -31,7 +12,7 @@
 </template>
 
 <script>
-    import { Routes } from './router/index.js'
+    import AppBar from './components/common/AppBar'
 
     export default {
         name: 'App',
@@ -42,21 +23,11 @@
             }
         },
 
-        computed: {
-            navRoutes() {
-                // only return routes that should show up in the navigation drawer
-                return Routes.filter((route) => !route.meta.hidden)
-            }
+        components: {
+            AppBar
         },
 
         methods: {
-            /*
-             * Toggle the nav drawer
-             */
-            navIconClicked() {
-                this.navDrawerOpen = !this.navDrawerOpen
-            },
-
             /*
              * Set the Vuetify theme colors
              */
@@ -87,14 +58,7 @@
     .content-container {
         min-height: calc(100vh - 70px);
     }
-
-    .v-navigation-drawer--temporary.v-navigation-drawer--clipped {
-        z-index: 5;
-        padding-top: 64px;
-    }
-
     ::v-deep .page {
         margin: 0px 20px 20px 20px;
     }
-
 </style>

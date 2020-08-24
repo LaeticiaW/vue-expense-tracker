@@ -262,7 +262,6 @@
              * Note that currentCategory and currentSubcategory must contain references to the newly retrieved categories
              */
             refreshCategories(currentCat, currentSubcat) {
-                console.log('refreshCategories:', currentCat, currentSubcat)
                 CategoryService.getCategories().then((categories) => {
                     this.categories = categories
                     this.currentCategory = null

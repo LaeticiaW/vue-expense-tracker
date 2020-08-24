@@ -17,15 +17,14 @@
                                     <v-text-field ref="name" dense outlined required maxlength="30"
                                                   v-model="categoryName" label="Category"
                                                   :rules="nameRules" spellcheck="false" autocomplete="off"
-                                                  @keydown.enter.prevent="addCategory">
-                                    </v-text-field>
+                                                  @keydown.enter.prevent="addCategory"/>
                                 </v-col>
                             </v-row>
                         </v-container>
                     </v-form>
                 </v-card-text>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-actions>
                     <v-btn text color="#787878" @click="close">Cancel</v-btn>

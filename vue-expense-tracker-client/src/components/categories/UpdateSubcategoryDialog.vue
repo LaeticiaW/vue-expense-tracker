@@ -53,7 +53,7 @@
                     </v-form>
                 </v-card-text>
 
-                <v-divider></v-divider>
+                <v-divider/>
 
                 <v-card-actions>
                     <v-btn text color="#787878" @click="close">Cancel</v-btn>
@@ -93,33 +93,14 @@
                 selectedMatchText: undefined,
                 nameRules: [
                     (value) => !!value || 'Subcategory Name is required',
-                    (value) => {
+                    () => {
                         this.dialogMessage = null
-                        return this.isSubcategoryUnique(value) || 'Subcategory Name is not unique'
+                        return this.isSubcategoryUnique() || 'Subcategory Name is not unique'
                     }
                 ],
                 newMatchText: undefined,
                 tempCategory: undefined,
                 tempSubcategory: undefined
-            }
-        },
-
-        computed: {
-            isSubcategoryUnique() {
-                return (value) => {
-                    // First check that if name is unchanged from original
-                    if (this.tempSubcategory.name.toLowerCase() === this.subcategory.name.toLowerCase()) {
-                        return true
-                    }
-                    // Now check to see if subcategory name is already used within the category
-                    const idx = this.tempCategory.subcategories.findIndex((subcat) => {
-                        return subcat.name.toLowerCase() === this.tempSubcategory.name.toLowerCase()
-                    })
-                    if (idx !== -1) {
-                        return false
-                    }
-                    return true
-                }
             }
         },
 
@@ -130,7 +111,7 @@
             save() {
                 this.dialogMessage = null
                 // Verify the subcategory is unique within the category before saving
-                if (this.isSubcategoryUnique(this.tempSubcategory.name)) {
+                if (this.isSubcategoryUnique()) {
                     // Update the subcategory in the category's subcategories
                     const index = this.tempCategory.subcategories.findIndex((subcat) => subcat.name === this.subcategory.name)
                     if (index !== -1) {
@@ -149,6 +130,25 @@
                 } else {
                     this.dialogMessage = 'Subcategory name is not unique'
                 }
+            },
+
+            /*
+             * Determine if the subcategory name is unique within the category
+             */
+            isSubcategoryUnique() {
+                // First check that if name is unchanged from original
+                if (this.tempSubcategory.name.toLowerCase() === this.subcategory.name.toLowerCase()) {
+                    return true
+                }
+                // Now check to see if subcategory name is already used within the category
+                const idx = this.tempCategory.subcategories.findIndex(
+                    subcat => subcat.name.toLowerCase() === this.tempSubcategory.name.toLowerCase()
+                )
+                if (idx !== -1) {
+                    console.log('returning false')
+                    return false
+                }
+                return true
             },
 
             /*
@@ -213,9 +213,11 @@
         border-radius: 5px;
         border: solid 1px #9a9a9a;
     }
+
     .new-text-mapping-container {
         padding-top: 16px;
     }
+
     ::v-deep .v-list-item__action {
         margin: 6px 0px !important;
     }
