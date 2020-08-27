@@ -3,13 +3,13 @@
         <page-header title="Login"/>
 
         <div class="page-content">
-            <v-form ref="form" v-model="isFormValid" class="form">
+            <form className={classes.root} noValidate autoComplete="off">
                 <v-select dense outlined required v-model="userId"
                           :items="users" item-text="id" item-value="id"
                           label="Users" background-color="#ffffff"
                           menu-props="offset-y, bottom" :rules="[ruleRequired]"/>
                 <v-btn raised color="primary" @click="login" class="login-button">Login</v-btn>
-            </v-form>
+            </form>
         </div>
     </div>
 </template>
