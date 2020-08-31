@@ -8,6 +8,7 @@
     "start-client": "cd vue-expense-tracker-client && npm run serve",
     "start-server": "cd vue-expense-tracker-server && npm run start",
     "initialize-db": "cd vue-expense-tracker-server && npm run create-db",
+    "set-permissions": "cd vue-expense-tracker-server && npm run set-permissions",
     "load-data": "cd vue-expense-tracker-server && npm run load-data"
   },
   "keywords": [],
