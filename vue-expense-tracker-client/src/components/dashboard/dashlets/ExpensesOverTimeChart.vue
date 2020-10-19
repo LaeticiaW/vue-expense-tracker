@@ -23,8 +23,8 @@
     import ExpenseService from '@/services/expense'
     import Util from '@/services/util'
     import SnackMsg from '@/components/common/SnackMsg'
-    import DateRangeInput from '@/components/common/DateRangeInput'
-    import moment from 'moment'
+    import DateRangeInput from '@/components/common/DateRangeInput'   
+    import dayjs from 'dayjs'
 
     export default {
         name: 'ExpensesOverTimeChart',
@@ -41,8 +41,8 @@
                 chartOptions: {},
                 expenses: [],
                 filter: {
-                    startDate: moment().startOf('year').format('YYYY-MM-DD'),
-                    endDate: moment().format('YYYY-MM-DD'),
+                    startDate: dayjs().startOf('year').format('YYYY-MM-DD'),
+                    endDate: dayjs().format('YYYY-MM-DD'),
                     categoryIds: []
                 },
                 snackOptions: {

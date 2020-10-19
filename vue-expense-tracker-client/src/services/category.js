@@ -147,5 +147,17 @@ export default {
             console.error('CategoryService.getCategorySelect error', error.response ? error.response : error)
             return Promise.reject(error.response)
         })
+    },
+
+     /*
+     * Create the categoryMap from a list of categories.  The categoryMap key is the categoryId and the 
+     * value is the category
+     */
+    getCategoryMap(categories) {
+        const categoryMap = categories.reduce((map, obj) => {               
+            map[obj._id] = obj              
+            return map
+        }, {})
+        return categoryMap
     }
 }

@@ -45,9 +45,9 @@
                                             :items="categories"
                                             item-key="treeId"
                                             item-children="subcategories"
-                                            :active="activeTreeIds"
+                                            :active="activeCategories"
                                             color="#454545"
-                                            :open="openTreeIds"
+                                            :open="openCategories"
                                             @update:active="itemActivated"
                                             @update:open="itemOpened">
                                     <template v-slot:append="{item, leaf, active}">
@@ -103,9 +103,9 @@
                 currentCategory: null,
                 currentSubcategory: null,
                 parentCategory: null,
-                activeTreeIds: [],
+                activeCategories: [],
                 openCategoryNames: [],
-                openTreeIds: [],
+                openCategories: [],
                 showCategoryDialog: false,
                 showSubcategoryDialog: false,
                 maxCategoryId: null,
@@ -144,7 +144,7 @@
                     this.categories = categories
                     if (this.categories.length) {
                         // Default the active category to the first one in the list
-                        this.activeTreeIds.push(this.categories[0])
+                        this.activeCategories.push(this.categories[0])
                         this.currentCategory = this.categories[0]
                     }
                 }).catch((error) => {
@@ -170,9 +170,9 @@
                 } else if (this.currentCategory) {
                     // Ensure that an item is always activated, do not allow user to deactivate the row that is currently active
                     if (this.currentCategory) {
-                        this.activeTreeIds.push(this.currentCategory)
+                        this.activeCategories.push(this.currentCategory)
                     } else if (this.currentSubcategory) {
-                        this.activeTreeIds.push(this.currentSubcategory)
+                        this.activeCategories.push(this.currentSubcategory)
                     }
                 }
             },
@@ -191,7 +191,7 @@
              * Keep track of open items
              */
             itemOpened(opened) {
-                this.openTreeIds = opened
+                this.openCategories = opened
             },
 
             /*
@@ -289,11 +289,10 @@
                         }
                     }
 
-                    // The activeTreeIds and openTreeIds arrays need to be recreated with the categories just retrieved,
+                    // The activeCategories and openCategories arrays need to be recreated with the categories just retrieved,
                     // so that the object references match.
-                    this.activeTreeIds = this.categories.length ? [this.currentCategory] : []
-
-                    this.openTreeIds = this.categories.filter((item) => this.openTreeIds.filter((openItem) => openItem._id === item._id).length > 0)
+                    this.activeCategories = this.categories.length ? [this.currentCategory] : []
+                    this.openCategories = this.categories.filter((item) => this.openCategories.filter((openItem) => openItem._id === item._id).length > 0)
                 }).catch((error) => {
                     console.error('Error retrieving categories:', error)
                     this.$refs.snack.show('Error retrieving the categories')

@@ -1,4 +1,4 @@
-import moment from 'moment'
+import dayjs from 'dayjs'
 import numeral from 'numeral'
 
 /*
@@ -42,7 +42,7 @@ export default {
          */
         formatDate(value, format) {
             if (value) {
-                return moment.utc(value).local().format(format || 'YYYY-MM-DD')
+                return dayjs.utc(value).local().format(format || 'YYYY-MM-DD')
             }
             return null
         },

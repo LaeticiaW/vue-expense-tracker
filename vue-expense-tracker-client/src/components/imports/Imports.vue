@@ -50,8 +50,8 @@
 </template>
 
 <script>
-    import ImportDialog from '@/components/imports/ImportDialog'
-    import moment from 'moment'
+    import ImportDialog from '@/components/imports/ImportDialog'    
+    import dayjs from 'dayjs'
     import ImportService from '@/services/import'
     import ExpenseService from '@/services/expense'
     import SnackMsg from '@/components/common/SnackMsg.vue'
@@ -66,8 +66,8 @@
             return {
                 showDialog: false,
                 filter: {
-                    startDate: moment().startOf('year').format('YYYY-MM-DD'),
-                    endDate: moment().format('YYYY-MM-DD')
+                    startDate: dayjs().startOf('year').format('YYYY-MM-DD'),
+                    endDate: dayjs().format('YYYY-MM-DD')
                 },
                 sortBy: 'importDate',
                 sortDesc: true,

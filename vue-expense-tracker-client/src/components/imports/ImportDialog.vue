@@ -69,8 +69,8 @@
 
 <script>
     import CategoryService from '@/services/category.js'
-    import ExpenseService from '@/services/expense'
-    import moment from 'moment'
+    import ExpenseService from '@/services/expense'    
+    import dayjs from 'dayjs'
 
     export default {
         name: 'ImportDialog',
@@ -178,7 +178,7 @@
 
                             // Create an import details summary object
                             const importDetails = {
-                                importDate: moment().format('YYYY-MM-DD'),
+                                importDate: dayjs().format('YYYY-MM-DD'),
                                 fileName: this.fileInfo.csvFile.name,
                                 description: this.fileInfo.description,
                                 recordCount: this.expenses.length
@@ -327,7 +327,7 @@
              * Determine if a date value is valid
              */
             isValidDate(value, dateFormat) {
-                if (!moment(value, dateFormat)) {
+                if (!dayjs(value, dateFormat)) {
                     console.error('Invalid date:', value, 'format:', dateFormat)
                     return false
                 }

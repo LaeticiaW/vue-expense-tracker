@@ -72,6 +72,8 @@
 <script>
     import CategoryService from '@/services/category.js'
     import SnackMsg from '@/components/common/SnackMsg.vue'
+    import { v4 as uuidv4 } from 'uuid'
+    import _ from 'lodash-core'
 
     export default {
         name: 'UpdateCategoryDialog',
@@ -99,7 +101,7 @@
                     }
                 ],
                 newSubcategory: undefined,
-                tempCategory: undefined,
+                tempCategory: _.cloneDeep(this.category),
                 isCategoryUnique: true,
                 dialogMessage: null,
                 snackOptions: {
@@ -156,8 +158,9 @@
                 }
 
                 const subcat = {
+                    id: uuidv4(),
                     name: this.newSubcategory,
-                    parentTreeId: this.tempCategory.id,
+                    parentTreeId: this.tempCategory.treeId,
                     matchText: []
                 }
 
@@ -174,13 +177,6 @@
                 this.dialogMessage = null
                 this.tempCategory.subcategories.splice(idx, 1)
             }
-        },
-
-        /*
-         * On create, make a deep copy of the category for form use
-         */
-        created() {
-            this.tempCategory = JSON.parse(JSON.stringify(this.category))
         }
     }
 </script>

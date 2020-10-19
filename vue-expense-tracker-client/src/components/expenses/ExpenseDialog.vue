@@ -64,8 +64,9 @@
 
 <script>
     import ExpenseService from '@/services/expense'
-    import CategoryService from '@/services/category'
-    import moment from 'moment'
+    import CategoryService from '@/services/category'   
+    import dayjs from 'dayjs'
+    import _ from 'lodash-core'
 
     export default {
         name: 'ExpenseDialog',
@@ -87,7 +88,7 @@
                 isFormValid: undefined,
                 isCreate: true,
                 trxDateMenu: false,
-                tempExpense: {},
+                tempExpense: _.cloneDeep(this.expense),
                 categories: [],
                 subcategories: [],
                 categoryMap: {},
@@ -116,10 +117,7 @@
             getCategories() {
                 CategoryService.getCategories().then((categories) => {
                     this.categories = categories
-                    this.categoryMap = this.categories.reduce((map, obj) => {
-                        map[obj._id] = obj
-                        return map
-                    }, {})
+                    this.categoryMap = CategoryService.getCategoryMap(categories)                     
                     if (this.tempExpense.categoryId) {
                         this.selectedCategory = this.categoryMap[this.tempExpense.categoryId]
                         this.subcategories = this.selectedCategory.subcategories
@@ -167,11 +165,9 @@
         /*
          * On create, retrieve the categories data
          */
-        created() {
-            // Make a deep copy of the expense object for the form
-            this.tempExpense = JSON.parse(JSON.stringify(this.expense))
+        created() {           
             if (this.tempExpense.trxDate) {
-                this.tempExpense.trxDate = moment(this.tempExpense.trxDate).format('YYYY-MM-DD')
+                this.tempExpense.trxDate = dayjs(this.tempExpense.trxDate).format('YYYY-MM-DD')
             }
 
             // Retrieve the categories list

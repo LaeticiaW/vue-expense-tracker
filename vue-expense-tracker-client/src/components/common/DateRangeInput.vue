@@ -38,8 +38,8 @@
     </div>
 </template>
 
-<script>
-    import moment from 'moment'
+<script>    
+    import dayjs from 'dayjs'
 
     export default {
         name: 'DateRangeInput',
@@ -55,7 +55,7 @@
                 startDateMenu: false,
                 endDateMenu: false,
                 minDate: null,
-                maxDate: moment().format('YYYY-MM-DD')
+                maxDate: dayjs().format('YYYY-MM-DD')
             }
         },
         computed: {
@@ -82,10 +82,10 @@
          */
         created() {
             if (!this.dateRange.startDate) {
-                moment().startOf('year').format('YYYY-MM-DD')
+                dayjs().startOf('year').format('YYYY-MM-DD')
             }
             if (!this.dateRange.endDate) {
-                moment().format('YYYY-MM-DD')
+                dayjs().format('YYYY-MM-DD')
             }
         }
     }

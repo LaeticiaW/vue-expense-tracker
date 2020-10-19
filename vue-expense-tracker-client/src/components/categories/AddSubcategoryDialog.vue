@@ -39,6 +39,7 @@
 <script>
     import CategoryService from '@/services/category'
     import { v4 as uuidv4 } from 'uuid'
+    import _ from 'lodash-core'
 
     export default {
         name: 'AddSubcategoryDialog',
@@ -72,10 +73,11 @@
              * Add the new subcategory to the parent category and save to the db
              */
             addSubcategory() {
-                const newCategory = JSON.parse(JSON.stringify(this.category))
+                const newCategory = _.cloneDeep(this.category)
                 newCategory.subcategories.push({
                     id: uuidv4(),
-                    name: this.subcategoryName
+                    name: this.subcategoryName,
+                    matchText: []
                 })
 
                 this.sortArray(newCategory.subcategories, 'name')

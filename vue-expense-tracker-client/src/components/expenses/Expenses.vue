@@ -54,8 +54,8 @@
     </div>
 </template>
 
-<script>
-    import moment from 'moment'
+<script>   
+    import dayjs from 'dayjs'
     import ExpenseDialog from '@/components/expenses/ExpenseDialog'
     import ExpenseService from '@/services/expense'
     import CategoryService from '@/services/category'
@@ -79,8 +79,8 @@
                 categories: [],
                 selectCategories: [],
                 filter: {
-                    startDate: moment().startOf('year').format('YYYY-MM-DD'),
-                    endDate: moment().format('YYYY-MM-DD'),
+                    startDate: dayjs().startOf('year').format('YYYY-MM-DD'),
+                    endDate: dayjs().format('YYYY-MM-DD'),
                     categoryIds: []
                 },
                 headers: [

@@ -26,8 +26,8 @@
     import ExpenseService from '@/services/expense'
     import SnackMsg from '@/components/common/SnackMsg'
     import DateRangeInput from '@/components/common/DateRangeInput'
-    import numeral from 'numeral'
-    import moment from 'moment'
+    import numeral from 'numeral'    
+    import dayjs from 'dayjs'
 
     export default {
         name: 'CategoryExpensesChart',
@@ -45,8 +45,8 @@
                 categoryTotals: [],
                 totalExpensesAmount: null,
                 filter: {
-                    startDate: moment().startOf('year').format('YYYY-MM-DD'),
-                    endDate: moment().format('YYYY-MM-DD'),
+                    startDate: dayjs().startOf('year').format('YYYY-MM-DD'),
+                    endDate: dayjs().format('YYYY-MM-DD'),
                     categoryIds: []
                 },
                 snackOptions: {

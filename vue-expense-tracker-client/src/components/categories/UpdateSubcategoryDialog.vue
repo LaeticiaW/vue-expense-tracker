@@ -67,6 +67,7 @@
 
 <script>
     import CategoryService from '@/services/category.js'
+    import _ from 'lodash-core'
 
     export default {
         name: 'UpdateSubcategoryDialog',
@@ -99,8 +100,8 @@
                     }
                 ],
                 newMatchText: undefined,
-                tempCategory: undefined,
-                tempSubcategory: undefined
+                tempCategory: _.cloneDeep(this.category),
+                tempSubcategory: _.cloneDeep(this.subcategory)
             }
         },
 
@@ -144,8 +145,7 @@
                 const idx = this.tempCategory.subcategories.findIndex(
                     subcat => subcat.name.toLowerCase() === this.tempSubcategory.name.toLowerCase()
                 )
-                if (idx !== -1) {
-                    console.log('returning false')
+                if (idx !== -1) {                    
                     return false
                 }
                 return true
@@ -193,15 +193,7 @@
                 this.dialogMessage = null
                 this.tempSubcategory.matchText.splice(idx, 1)
             }
-        },
-
-        /*
-         * On create, make deep copies of the category and subcategory to use with the form
-         */
-        created() {
-            this.tempSubcategory = JSON.parse(JSON.stringify(this.subcategory))
-            this.tempCategory = JSON.parse(JSON.stringify(this.category))
-        }
+        }        
     }
 </script>
 

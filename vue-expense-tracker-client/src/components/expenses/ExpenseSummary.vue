@@ -69,8 +69,8 @@
     import CategoryService from '@/services/category'
     import SnackMsg from '@/components/common/SnackMsg'
     import TableFilter from '@/components/common/TableFilter'
-    import DateRangeInput from '@/components/common/DateRangeInput'
-    import moment from 'moment'
+    import DateRangeInput from '@/components/common/DateRangeInput'    
+    import dayjs from 'dayjs'
     import PageHeader from '../common/PageHeader'
     import CategorySelect from '../common/CategorySelect'
 
@@ -90,8 +90,8 @@
                 categories: [],
                 selectCategories: [],
                 filter: {
-                    startDate: moment().startOf('year').format('YYYY-MM-DD'),
-                    endDate: moment().format('YYYY-MM-DD'),
+                    startDate: dayjs().startOf('year').format('YYYY-MM-DD'),
+                    endDate: dayjs().format('YYYY-MM-DD'),
                     categoryIds: []
                 },
                 headers: [
