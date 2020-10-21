@@ -203,12 +203,9 @@ export default {
      * @param {array} expenses - array of expense objects
      * @param {object} importDetails - details of the import
      */
-    importExpenses(expenses, importDetails) {
-        const importId = new Date()
-
+    importExpenses(expenses, importDetails) {        
         // Normalize the trxDate to 'YYYY-MM-DD' and remove $ from amount
-        expenses.forEach((exp) => {
-            exp.importId = importId
+        expenses.forEach((exp) => {           
             exp.trxDate = dayjs(exp.trxDate, importDetails.dateFormat).format('YYYY-MM-DD')
 
             if (typeof exp.amount === 'string' && exp.amount.substr(0, 1) === '$') {
